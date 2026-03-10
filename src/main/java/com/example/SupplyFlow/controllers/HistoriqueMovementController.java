@@ -1,4 +1,4 @@
-package com.example.SupplyFlow.controller;
+package com.example.SupplyFlow.controllers;
 
 public class HistoriqueMovementController {
 }

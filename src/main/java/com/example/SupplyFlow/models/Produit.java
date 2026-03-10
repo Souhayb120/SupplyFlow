@@ -13,6 +13,10 @@ public class Produit {
     private double prix;
     private String category;
 
+    @ManyToOne
+    @JoinColumn(name = "fornisseur_id")
+    private Fornisseur fornisseur;
+
     public Produit() {
     }
 

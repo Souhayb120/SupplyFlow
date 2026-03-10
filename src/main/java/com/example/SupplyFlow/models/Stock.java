@@ -5,28 +5,41 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "movement")
-public class HistoriqueMovment {
+public class Stock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id ;
-    private int produitId;
     private String type;
     private int quantite;
 
-    public HistoriqueMovment() {
+    @ManyToOne
+    @JoinColumn(name = "produit_id")
+    private Produit produit;
+    public Stock() {
     }
 
-    public HistoriqueMovment(int id, int produitId, String type, int quantite) {
+    public Stock(int id, String type, int quantite, Produit produit) {
         this.id = id;
-        this.produitId = produitId;
         this.type = type;
         this.quantite = quantite;
+        this.produit = produit;
     }
 
-    public HistoriqueMovment(int produitId, String type, int quantite) {
-        this.produitId = produitId;
+    public Stock( String type, int quantite, Produit produit) {
+        this.id = id;
         this.type = type;
         this.quantite = quantite;
+        this.produit = produit;
+    }
+
+
+
+    public Produit getProduit() {
+        return produit;
+    }
+
+    public void setProduit(Produit produit) {
+        this.produit = produit;
     }
 
     public int getId() {
@@ -37,13 +50,7 @@ public class HistoriqueMovment {
         this.id = id;
     }
 
-    public int getProduitId() {
-        return produitId;
-    }
 
-    public void setProduitId(int produitId) {
-        this.produitId = produitId;
-    }
 
     public String getType() {
         return type;
