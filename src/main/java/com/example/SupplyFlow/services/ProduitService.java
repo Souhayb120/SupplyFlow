@@ -22,10 +22,8 @@ public class ProduitService {
         return produitRepository.findAll();
     }
 
+
     public void addProduit(Produit produit){
-
-
-
         produitRepository.save(produit);
     }
 
