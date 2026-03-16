@@ -4,7 +4,7 @@ package com.example.SupplyFlow.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "movement")
+@Table(name = "stock")
 public class Stock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

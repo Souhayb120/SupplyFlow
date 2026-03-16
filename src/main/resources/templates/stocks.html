@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Stock Management</title>
+</head>
+
+<body>
+
+<h2>Stock Management</h2>
+
+<form th:action="@{/stocks/save}" th:object="${stock}" method="post">
+
+    Type:
+    <select th:field="*{type}">
+        <option value="ENTREE">ENTREE</option>
+        <option value="SORTIE">SORTIE</option>
+    </select>
+    <br><br>
+
+    Quantity:
+    <input type="number" th:field="*{quantite}">
+    <br><br>
+
+    Product:
+    <select th:field="*{produit.id}"> <!-- bind only to ID -->
+        <option th:each="p : ${produits}" th:value="${p.id}" th:text="${p.nom}"></option>
+    </select>
+    <br><br>
+
+    <button type="submit">Save</button>
+</form>
+
+<br><br>
+
+<table border="1" width="100%">
+    <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Quantity</th>
+        <th>Product</th>
+    </tr>
+
+    <tr th:each="s : ${stocks}">
+        <td th:text="${s.id}"></td>
+        <td th:text="${s.type}"></td>
+        <td th:text="${s.quantite}"></td>
+        <td th:text="${s.produit.nom}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Fornisseurs Management</title>
+</head>
+
+<body>
+
+<h2>Manage Fornisseurs</h2>
+
+
+<form th:action="@{/fornisseurs/save}" th:object="${fornisseur}" method="post">
+
+    Name: <input type="text" th:field="*{nom}" required>
+    <br><br>
+
+    City: <input type="text" th:field="*{ville}" required>
+    <br><br>
+
+    Phone: <input type="text" th:field="*{phone}" required>
+    <br><br>
+
+    <button type="submit">Save</button>
+</form>
+
+<br><br>
+
+<!-- Table to display existing Fornisseurs -->
+<table border="1" width="100%">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Phone</th>
+    </tr>
+
+    <tr th:each="f : ${fornisseurs}">
+        <td th:text="${f.id}"></td>
+        <td th:text="${f.nom}"></td>
+        <td th:text="${f.ville}"></td>
+        <td th:text="${f.phone}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -1,28 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Produits</title>
 </head>
-<body>
-<h2>Welcome to Products</h2>
-<a href="/produit">add</a>
-<table border="1" style="border-collapse: collapse; width: 100%">
-    <tr >
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Catégorie</th>
-        <th>Prix</th>
 
+<body>
+
+<h2>Product Management</h2>
+
+<form th:action="@{/produits/save}" th:object="${produit}" method="post">
+
+    Name:
+    <input type="text" th:field="*{nom}">
+    <br><br>
+
+    Price:
+    <input type="number" th:field="*{prix}">
+    <br><br>
+
+    Category:
+    <input type="text" th:field="*{category}">
+    <br><br>
+
+    <button type="submit">Save</button>
+
+</form>
+
+<br><br>
+
+<table border="1" style="border-collapse: collapse; width: 100%">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
     </tr>
 
     <tr th:each="p : ${produits}">
+
         <td th:text="${p.id}"></td>
         <td th:text="${p.nom}"></td>
-        <td th:text="${p.categorie}"></td>
+        <td th:text="${p.category}"></td>
         <td th:text="${p.prix}"></td>
 
     </tr>
+
 </table>
+
 </body>
 </html>
